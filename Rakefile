@@ -23,5 +23,20 @@ RSpec::Core::RakeTask.new do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
+namespace :morning do
+  desc "Make coffee"
+  task :coffee do
+    puts "Making coffee..."
+    puts "- Fill kettle"
+    puts "- Switch kettle on"
+    puts "- Wait until boiling"
+    puts "- Switch kettle off"
+    puts "- Open coffee jar"
+    puts "- Fill spoon with coffee"
+    puts "- Tip spoonful into cup"
+    puts "- Close coffee jar"
+    puts "Done"
+  end
+end
 
 task :default => :spec
