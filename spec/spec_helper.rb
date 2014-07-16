@@ -7,10 +7,13 @@ require 'rspec'
 require 'cool_tool'
 
 RSpec.configure do |config|
+  # Use color in STDOUT
+  config.color = true
 
-  config.around(:each) do |example|
-    # Put code here that we need to run before each test
-  end
+  # Use color not only in STDOUT but also in pagers and files
+  config.tty = true
 
+  # Use the specified formatter
+  config.formatter = :documentation # :progress, :html, :textmate
 end
 
