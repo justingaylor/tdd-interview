@@ -66,8 +66,23 @@ describe RightScale::CoolTool do
      end
    end
   #############################################################################
+  # BONUS 1: Convert DEFAULT_FILEPATH to an attr_accessor called default_filepath using TDD.
+   context '#filepath_attr_accessor' do
+     let(:new_filepath) { '/var/log/cool_tool/cool_tool2.log' }
+     it 'provides a default_filepath attr_accessor that allows to write' do
+       expect{ subject.default_filepath = new_filepath }.to_not raise_error
+     end
+     it 'provides a default_filepath attr_accessor that allows to retrieve past value' do
+       expect( subject.default_filepath ).to eq(new_filepath)
+     end
+     it 'default_filepath is used as default filepath' do
+       RightScale::CoolTool.default_filepath = new_filepath
+       expect(subject.new.file_path).to eq(new_filepath)
+     end
+   end
+  #############################################################################
   # BONUS 2: Raise an exception when filepath param to RightScale::CoolTool.new is not a String using TDD.
-   context 'initialize' do
+   context '#not_a_string' do
      it "raises exception when filepath param to RightScale::CoolTool.new is not a String"  do
        expect{ subject.new(42) }.to raise_error
      end

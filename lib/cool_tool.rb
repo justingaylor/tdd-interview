@@ -5,8 +5,18 @@ module RightScale
     DEFAULT_FILEPATH = "/var/log/cool_tool/cool_tool.log"
     attr_reader :file_path
 
-    def initialize(file_path = DEFAULT_FILEPATH)
-      if file_path.is_a? String
+    class << self
+      attr_accessor :default_filepath
+    end
+
+    def initialize(file_path = nil)
+      if file_path.nil?
+        if self.class.default_filepath.nil?
+          @file_path = DEFAULT_FILEPATH
+        else
+          @file_path = self.class.default_filepath
+        end
+      elsif file_path.is_a? String
         @file_path = file_path
       else
         raise ArgumentError, "file_path should be a String"
