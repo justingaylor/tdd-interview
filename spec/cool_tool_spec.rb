@@ -66,4 +66,10 @@ describe RightScale::CoolTool do
      end
    end
   #############################################################################
+  # BONUS 2: Raise an exception when filepath param to RightScale::CoolTool.new is not a String using TDD.
+   context 'initialize' do
+     it "raises exception when filepath param to RightScale::CoolTool.new is not a String"  do
+       expect{ subject.new(42) }.to raise_error
+     end
+   end
  end
